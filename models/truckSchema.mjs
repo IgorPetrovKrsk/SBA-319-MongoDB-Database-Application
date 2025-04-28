@@ -11,7 +11,7 @@ const truckSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: [0, 'Capacity cannot be less that 0'],
-        max: [20000, 'Where did you get that king of truck?!?!?!']
+        max: [20000, 'Where did you get that kind of truck?!?!?!']
     },
     status: {
         type: String,
@@ -23,7 +23,8 @@ const truckSchema = new mongoose.Schema({
     }
 });
 
-truckSchema.index({licensePlate:1}); //first index is license plate, because all of the searching is done by licence plate
+//duplicate index I think this is because licence plate is unique
+//truckSchema.index({licensePlate:1}); //first index is license plate, because all of the searching is done by licence plate
 truckSchema.index({status:1}); //second index is status because it is common to find all idle or avalable trucks
 
 truckSchema.statics.findAllIdleTrucks = function () {
