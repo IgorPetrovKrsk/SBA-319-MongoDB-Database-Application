@@ -15,7 +15,7 @@ async function collectDB() {
     }
 }
 
-async function createValidationRules() {
+export async function createValidationRules() {
     const db = connection.connection.db;  //first connection in mongoose, second is MongoDB.
     await db.command({
         collMod: "trucks",
