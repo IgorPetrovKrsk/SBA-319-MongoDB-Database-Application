@@ -1,9 +1,9 @@
 import Messages from '../models/messageSchema.mjs';
 
-// async function getAllTrucks(req, res) {
-//     const allTrucks = await Trucks.find({});
-//     res.json(allTrucks);
-// }
+async function getAllMessages(req, res) {
+    const allMessages = await Messages.find({});
+    res.json(allMessages);
+}
 
 // async function getAllIdleTrucks(req, res) {
 //     const allIdleTrucks = await Trucks.findAllIdleTrucks();
@@ -44,5 +44,5 @@ import Messages from '../models/messageSchema.mjs';
 //     res.json(deletedTruck);
 // }
 
-// export default { getAllTrucks, postNewTruck, updateTruckByLicensePlate, deleteTruckByLicensePlate, getTruckByLicensePlate, getAllIdleTrucks, getAllAvailableTrucks }
+export default { getAllMessages}
 

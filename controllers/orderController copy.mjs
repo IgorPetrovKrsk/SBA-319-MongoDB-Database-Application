@@ -1,9 +1,9 @@
 import Orders from '../models/orderSchema.mjs';
 
-// async function getAllTrucks(req, res) {
-//     const allTrucks = await Trucks.find({});
-//     res.json(allTrucks);
-// }
+async function getAllOrders(req, res) {
+    const allOrders = await Orders.find({});
+    res.json(allOrders);
+}
 
 // async function getAllIdleTrucks(req, res) {
 //     const allIdleTrucks = await Trucks.findAllIdleTrucks();
@@ -44,5 +44,5 @@ import Orders from '../models/orderSchema.mjs';
 //     res.json(deletedTruck);
 // }
 
-// export default { getAllTrucks, postNewTruck, updateTruckByLicensePlate, deleteTruckByLicensePlate, getTruckByLicensePlate, getAllIdleTrucks, getAllAvailableTrucks }
+export default { getAllOrders}
 
