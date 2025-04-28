@@ -5,6 +5,7 @@ import connectDB from './db/conn.mjs';
 import truckRoutes from './routes/truckRoute.mjs';
 import messageRoutes from './routes/messageRoute.mjs';
 import orderRoutes from './routes/orderRoute.mjs';
+import seedRoute from './routes/seedRoute.mjs';
 import hateoas from './hateos/hateoas.mjs';
 
 dotenv.config();
@@ -15,6 +16,8 @@ connectDB();
 app.use(express.json());
 
 app.get('/', hateoas.getRootHateoas);
+
+app.use('/seed', seedRoute); //seeding
 
 app.use('/trucks',truckRoutes);
 app.use('/messages',messageRoutes);
