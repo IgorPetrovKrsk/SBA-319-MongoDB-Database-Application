@@ -25,6 +25,6 @@ const messageSchema = new mongoose.Schema({
 
 messageSchema.index({ truckLicencePlate: 1 });
 messageSchema.index({ status: 1 });
-messageSchema.index({ registrationDate: -1 }); //to find all messages from today or last day.
+messageSchema.index({ date: -1 }); //to find all messages from today or last day.
 
 export default mongoose.model("Message", messageSchema)

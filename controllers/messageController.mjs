@@ -5,23 +5,17 @@ async function getAllMessages(req, res) {
     res.json(allMessages);
 }
 
-// async function getAllIdleTrucks(req, res) {
-//     const allIdleTrucks = await Trucks.findAllIdleTrucks();
-//     res.json(allIdleTrucks);
-// }
 
-// async function getAllAvailableTrucks(req, res) {
-//     const allIdleTrucks = await Trucks.findAllAvailableTrucks();
-//     res.json(allIdleTrucks);
-// }
-
-// async function getTruckByLicensePlate(req, res) {
-//     const truck = await Trucks.findOne({ licensePlate: req.params.licensePlate });
-//     if (!truck) {
-//         res.json({ err: `Cannot find truck with license plate ${req.params.licensePlate}` })
-//     }
-//     res.json(truck);
-// }
+async function getAllMessagesByStatusOrLicencePlate(req, res) {
+    let messages = await Messages.find({ truckLicencePlate: req.params.statusOrLicencePlate });
+    if (!messages || messages.length == 0) {
+        messages = await Messages.find({ status: req.params.statusOrLicencePlate });
+        if (!messages || messages.length == 0) {
+            res.json({ err: `Cannot find messages with license plate or status ${req.params.statusOrLicencePlate}` });
+        }
+    }
+    res.json(messages);
+}
 
 // async function postNewTruck(req, res) {
 //     const newTruck = await Trucks.create(req.body);
@@ -44,5 +38,5 @@ async function getAllMessages(req, res) {
 //     res.json(deletedTruck);
 // }
 
-export default { getAllMessages}
+export default { getAllMessages, getAllMessagesByStatusOrLicencePlate }
 
