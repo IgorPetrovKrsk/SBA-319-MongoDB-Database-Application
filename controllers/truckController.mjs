@@ -6,7 +6,12 @@ async function getAllTrucks(req, res) {
 }
 
 async function getAllIdleTrucks(req, res) {
-    const allIdleTrucks = await Trucks.allIdleTrucks();
+    const allIdleTrucks = await Trucks.findAllIdleTrucks();
+    res.json(allIdleTrucks);
+}
+
+async function getAllAvailableTrucks(req, res) {
+    const allIdleTrucks = await Trucks.findAllAvailableTrucks();
     res.json(allIdleTrucks);
 }
 
@@ -39,5 +44,5 @@ async function deleteTruckByLicensePlate(req, res) {
     res.json(deletedTruck);
 }
 
-export default { getAllTrucks, postNewTruck, updateTruckByLicensePlate, deleteTruckByLicensePlate, getTruckByLicensePlate, getAllIdleTrucks }
+export default { getAllTrucks, postNewTruck, updateTruckByLicensePlate, deleteTruckByLicensePlate, getTruckByLicensePlate, getAllIdleTrucks, getAllAvailableTrucks }
 

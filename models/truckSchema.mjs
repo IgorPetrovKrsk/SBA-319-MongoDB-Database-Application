@@ -23,8 +23,15 @@ const truckSchema = new mongoose.Schema({
     }
 });
 
-truckSchema.statics.allIdleTrucks = function () {
+truckSchema.index({licensePlate:1}); //first index is license plate, because all of the searching is done by licence plate
+truckSchema.index({status:1}); //second index is status because it is common to find all idle or avalable trucks
+
+truckSchema.statics.findAllIdleTrucks = function () {
     return this.find({status: 'Idle'});
 }
+
+truckSchema.statics.findAllAvailableTrucks = function () {
+    return this.find({status: 'Available'});}
+
 
 export default mongoose.model("Truck", truckSchema)
