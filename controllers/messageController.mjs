@@ -28,7 +28,6 @@ async function postNewMessage(req, res) {
 }
 
 async function updateMessageById(req, res) {
-
     req.body.date = Date.now();
     let updatedMessage = await Messages.findById(req.params.id);
     if (!updatedMessage) {
@@ -36,19 +35,23 @@ async function updateMessageById(req, res) {
     } else if (updatedMessage.status != 'Pending') {
         res.json({ err: `Cannot change message witch in not 'Pending' id:${req.params.id}` });
     } else {
-        Object.assign(updatedMessage, req.body);
-        await updatedMessage.save();
+        await updatedMessage.updateOne(req.body, {new: true});        
         res.json(updatedMessage);
     }
 }
 
-// async function deleteTruckByLicensePlate(req, res) {
-//     const deletedTruck = await Trucks.findOneAndDelete({ licensePlate: req.params.licensePlate });
-//     if (!deletedTruck) {
-//         res.json({ err: `Cannot find truck with license plate ${req.params.licensePlate}` })
+// async function MessageById(req, res) {
+//     const deletedMessage = await Messages.findById(req.params.id);
+//     if (!deletedMessage) {
+//         res.json({ err: `Cannot find message with id ${req.params.id}` })
+//     } else if (deletedMessage.status != 'Pending') {
+//         res.json({ err: `Cannot delete message witch in not 'Pending' id:${req.params.id}` });
+//     } else {
+//         deletedMessage.deleteOne
+//         res.json(deletedTruck);
 //     }
-//     res.json(deletedTruck);
+    
 // }
 
-export default { getAllMessages, getAllMessagesByStatusOrLicencePlate, postNewMessage, updateMessageById }
+export default { getAllMessages, getAllMessagesByStatusOrLicencePlate, postNewMessage, updateMessageById}
 
