@@ -16,10 +16,15 @@ const messageSchema = new mongoose.Schema({
     content: {
         type: String,
         required: [true, 'Message cannot be empty']
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 
-messageSchema.index({truckLicencePlate:1});
-messageSchema.index({ status: 1 }); 
+messageSchema.index({ truckLicencePlate: 1 });
+messageSchema.index({ status: 1 });
+messageSchema.index({ registrationDate: -1 }); //to find all messages from today or last day.
 
 export default mongoose.model("Message", messageSchema)
