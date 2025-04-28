@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 import { globalErrorHandler } from './globalErrorHandler/globalErrorHandler.mjs';
 import connectDB from './db/conn.mjs';
 import truckRoutes from './routes/truckRoute.mjs'
+import messageRoutes from './routes/messageRoute.mjs'
+import orderRoutes from './routes/orderRoute.mjs'
+import hateoas from './hateoas/hateoas.mjs';
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -11,7 +14,11 @@ connectDB();
 
 app.use(express.json());
 
+app.get('/', hateoas.getRootHateoas);
+
 app.use('/trucks',truckRoutes);
+app.use('/messages',messageRoutes);
+app.use('/orders',orderRoutes);
 
 app.use(globalErrorHandler);
 
