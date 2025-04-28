@@ -17,10 +17,12 @@ async function getAllMessagesByStatusOrLicencePlate(req, res) {
     res.json(messages);
 }
 
-// async function postNewTruck(req, res) {
-//     const newTruck = await Trucks.create(req.body);
-//     res.json(newTruck);
-// }
+async function postNewMessage(req, res) {
+    delete req.body.status; //date and status should be schemas default
+    delete req.body.date;  
+    const newMessage = await Messages.create(req.body);
+    res.json(newMessage);
+}
 
 // async function updateTruckByLicensePlate(req, res) {
 //     const updatedTruck = await Trucks.findOneAndUpdate({ licensePlate: req.params.licensePlate }, req.body, { new: true });
@@ -38,5 +40,5 @@ async function getAllMessagesByStatusOrLicencePlate(req, res) {
 //     res.json(deletedTruck);
 // }
 
-export default { getAllMessages, getAllMessagesByStatusOrLicencePlate }
+export default { getAllMessages, getAllMessagesByStatusOrLicencePlate,postNewMessage }
 

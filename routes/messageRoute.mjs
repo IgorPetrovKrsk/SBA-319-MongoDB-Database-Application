@@ -5,10 +5,7 @@ const router = express.Router();
 
 router.get('/',messageCTRL.getAllMessages);
 router.get('/:statusOrLicencePlate',messageCTRL.getAllMessagesByStatusOrLicencePlate);
-// router.get('/allIdle',truckCTRL.getAllIdleTrucks); //all idle before :licenceplate //order matters
-// router.get('/allAvailable',truckCTRL.getAllAvailableTrucks); //all Available before :licenceplate //order matters
-// router.get('/:licensePlate',truckCTRL.getTruckByLicensePlate);
-// router.post('/',truckCTRL.postNewTruck);
+router.post('/',messageCTRL.postNewMessage);
 // router.put('/:licensePlate',truckCTRL.updateTruckByLicensePlate);
 // router.delete('/:licensePlate',truckCTRL.deleteTruckByLicensePlate);
 
