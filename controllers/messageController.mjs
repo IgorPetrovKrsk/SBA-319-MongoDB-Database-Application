@@ -40,18 +40,17 @@ async function updateMessageById(req, res) {
     }
 }
 
-// async function MessageById(req, res) {
-//     const deletedMessage = await Messages.findById(req.params.id);
-//     if (!deletedMessage) {
-//         res.json({ err: `Cannot find message with id ${req.params.id}` })
-//     } else if (deletedMessage.status != 'Pending') {
-//         res.json({ err: `Cannot delete message witch in not 'Pending' id:${req.params.id}` });
-//     } else {
-//         deletedMessage.deleteOne
-//         res.json(deletedTruck);
-//     }
-    
-// }
+async function deleteMessageById(req, res) {
+    const deletedMessage = await Messages.findById(req.params.id);
+    if (!deletedMessage) {
+        res.json({ err: `Cannot find message with id ${req.params.id}` })
+    } else if (deletedMessage.status != 'Pending') {
+        res.json({ err: `Cannot delete message witch in not 'Pending' id:${req.params.id}` });
+    } else {
+        await Messages.findByIdAndDelete(req.params.id);
+        res.json(deletedMessage);
+    }    
+}
 
-export default { getAllMessages, getAllMessagesByStatusOrLicencePlate, postNewMessage, updateMessageById}
+export default { getAllMessages, getAllMessagesByStatusOrLicencePlate, postNewMessage,updateMessageById, deleteMessageById}
 
