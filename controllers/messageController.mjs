@@ -35,7 +35,7 @@ async function updateMessageById(req, res) {
     } else if (updatedMessage.status != 'Pending') {
         res.json({ err: `Cannot change message witch in not 'Pending' id:${req.params.id}` });
     } else {
-        await updatedMessage.updateOne(req.body, {new: true});        
+        await updatedMessage.updateOne(req.body, { new: true });
         res.json(updatedMessage);
     }
 }
@@ -49,8 +49,17 @@ async function deleteMessageById(req, res) {
     } else {
         await Messages.findByIdAndDelete(req.params.id);
         res.json(deletedMessage);
-    }    
+    }
 }
 
-export default { getAllMessages, getAllMessagesByStatusOrLicencePlate, postNewMessage,updateMessageById, deleteMessageById}
+async function searchForText(req, res) {
+    let messages = await Messages.find({ $text: { $search: req.params.text } });
+    if (!messages || messages.length == 0) {
+        res.json({ err: `Cannot find messages with text:${req.params.text}` });
+    } else {
+        res.json(messages);
+    }
+}
+
+export default { getAllMessages, getAllMessagesByStatusOrLicencePlate, postNewMessage, updateMessageById, deleteMessageById, searchForText }
 

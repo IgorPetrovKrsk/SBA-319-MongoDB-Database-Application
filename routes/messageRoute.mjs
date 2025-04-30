@@ -8,5 +8,6 @@ router.get('/:statusOrLicencePlate',messageCTRL.getAllMessagesByStatusOrLicenceP
 router.post('/',messageCTRL.postNewMessage);
 router.put('/:id',messageCTRL.updateMessageById);
 router.delete('/:id',messageCTRL.deleteMessageById);
+router.get('/search/:text',messageCTRL.searchForText)
 
 export default router

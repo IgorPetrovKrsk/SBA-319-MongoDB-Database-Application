@@ -16,6 +16,7 @@ DELETE | /trucks/:licensePlate | Delete truck with selected license plate |
 ||  Messages| |
 GET | /messages | All messages | 
 GET | /messages/:statusOrLicencePlate | Messages with selected status or truck lisence plate | 
+GET | /messages/search/:text | Messages with selected text (text can be in any field) | 
 POST | /messages | Create new message |
 PUT | /messages/:id | Update message with selected id |
 DELETE | /messages/:id | Delete message with selected id |

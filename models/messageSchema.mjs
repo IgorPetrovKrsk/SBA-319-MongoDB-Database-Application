@@ -26,5 +26,6 @@ const messageSchema = new mongoose.Schema({
 messageSchema.index({ truckLicencePlate: 1 });
 messageSchema.index({ status: 1 });
 messageSchema.index({ date: -1 }); //to find all messages from today or last day.
+messageSchema.index({'$**': 'text'}); //wildcard index for full text search
 
 export default mongoose.model("Message", messageSchema)
