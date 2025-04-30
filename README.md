@@ -25,3 +25,13 @@ GET | /orders | All orders |
 GET | /messages/:licensePlate | Orders assigned to truck with selected lisence plate | 
 POST | /orders | Create new order |
 DELETE | /orders/deleteDelivered | Delete all delivered orders |
+
+
+What could you have done differently during the planning stages of your project to make the execution easier?
+Plan routes ahead, because 'trucks/allAvailable' and 'trucks//:licensePlate' can intersect
+
+Were there any requirements that were difficult to implement? What do you think would make them easier to implement in future projects?
+Text search was a little bit harder. 
+
+What would you add to or change about your application if given more time?
+I will add more routes, like PUT for orders. And add a lot more data and user actions (like delete) validation.
