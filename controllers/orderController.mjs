@@ -23,10 +23,11 @@ async function getAllOrders(req, res) {
 //     res.json(truck);
 // }
 
-// async function postNewTruck(req, res) {
-//     const newTruck = await Trucks.create(req.body);
-//     res.json(newTruck);
-// }
+async function postNewOrder(req, res) {
+    delete req.body.status; //date and status should be schemas default
+    const newOrder = await Orders.create(req.body);
+    res.json(newOrder);
+}
 
 // async function updateTruckByLicensePlate(req, res) {
 //     const updatedTruck = await Trucks.findOneAndUpdate({ licensePlate: req.params.licensePlate }, req.body, { new: true });
@@ -44,5 +45,5 @@ async function getAllOrders(req, res) {
 //     res.json(deletedTruck);
 // }
 
-export default { getAllOrders}
+export default { getAllOrders, postNewOrder }
 
