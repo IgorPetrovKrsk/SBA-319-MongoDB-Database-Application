@@ -5,45 +5,25 @@ async function getAllOrders(req, res) {
     res.json(allOrders);
 }
 
-// async function getAllIdleTrucks(req, res) {
-//     const allIdleTrucks = await Trucks.findAllIdleTrucks();
-//     res.json(allIdleTrucks);
-// }
-
-// async function getAllAvailableTrucks(req, res) {
-//     const allIdleTrucks = await Trucks.findAllAvailableTrucks();
-//     res.json(allIdleTrucks);
-// }
-
-// async function getTruckByLicensePlate(req, res) {
-//     const truck = await Trucks.findOne({ licensePlate: req.params.licensePlate });
-//     if (!truck) {
-//         res.json({ err: `Cannot find truck with license plate ${req.params.licensePlate}` })
-//     }
-//     res.json(truck);
-// }
+async function getOrdersByLicensePlate(req, res) {
+    const orders = await Orders.find({ truckLicencePlate: req.params.licensePlate });
+    if (!orders || orders.length == 0) {
+        res.json({ err: `Cannot find orders for truck with license plate ${req.params.licensePlate}` })
+    } else {
+        res.json(orders);
+    }
+}
 
 async function postNewOrder(req, res) {
     delete req.body.status; //date and status should be schemas default
     const newOrder = await Orders.create(req.body);
-    res.json(newOrder);
+    res.status(201).json(newOrder);
 }
 
-// async function updateTruckByLicensePlate(req, res) {
-//     const updatedTruck = await Trucks.findOneAndUpdate({ licensePlate: req.params.licensePlate }, req.body, { new: true });
-//     if (!updatedTruck) {
-//         res.json({ err: `Cannot find truck with license plate ${req.params.licensePlate}` })
-//     }
-//     res.json(updatedTruck);
-// }
+async function deleteDelivered(req, res) {
+    const deletedTruck = await Orders.deleteMany({ status: 'Delivered' });
+    res.status(204).json({ status: `All delivered orders has been deleted.` });
+}
 
-// async function deleteTruckByLicensePlate(req, res) {
-//     const deletedTruck = await Trucks.findOneAndDelete({ licensePlate: req.params.licensePlate });
-//     if (!deletedTruck) {
-//         res.json({ err: `Cannot find truck with license plate ${req.params.licensePlate}` })
-//     }
-//     res.json(deletedTruck);
-// }
-
-export default { getAllOrders, postNewOrder }
+export default { getAllOrders, postNewOrder, deleteDelivered, getOrdersByLicensePlate }
 
