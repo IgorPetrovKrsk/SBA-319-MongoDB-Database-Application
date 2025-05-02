@@ -1,12 +1,12 @@
 export const trucksSeed = [
     { licensePlate: 'ABC123', driver: 'John Doe', capacity: 8000, status: 'Available' },
-    { licensePlate: 'XYZ789', driver: 'Jane Smith', capacity: 15000, status: 'En Route' },
+    { licensePlate: 'XYZ789', driver: 'Jane Smith', capacity: 10000, status: 'En Route' },
     { licensePlate: 'LMN456', driver: 'Alice Johnson', capacity: 5000, status: 'Repairs' },
     { licensePlate: 'PQR321', driver: 'Bob Brown', capacity: 10000, status: 'Idle' },
     { licensePlate: 'STU654', driver: 'Charlie Davis', capacity: 2000, status: 'Available' },
     { licensePlate: 'JKL987', driver: 'Emma Wilson', capacity: 6000, status: 'En Route' },
     { licensePlate: 'DEF432', driver: 'Frank Green', capacity: 7000, status: 'Repairs' },
-    { licensePlate: 'GHI876', driver: 'Grace White', capacity: 12000, status: 'Idle' },
+    { licensePlate: 'GHI876', driver: 'Grace White', capacity: 10000, status: 'Idle' },
     { licensePlate: 'VWX210', driver: 'Hank Black', capacity: 4000, status: 'Available' },
     { licensePlate: 'OPQ543', driver: 'Ivy Hall', capacity: 1000, status: 'En Route' }
   ];
